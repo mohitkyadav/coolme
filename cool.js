@@ -43,3 +43,5 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 });
+
+require('http').createServer().listen(3000);
