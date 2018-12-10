@@ -1,0 +1,29 @@
+{
+  "name": "coolme",
+  "version": "0.0.1",
+  "description": "Discord bot for cool-name-api",
+  "main": "cool.js",
+  "author": "Mohit Kumar Yadav",
+  "icon": "./icon.jpg",
+  "homepage": "https://github.com/mohitkyadav",
+  "scripts": {
+    "start": "node cool.js"
+  },
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "dotenv": "^6.2.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0"
+  },
+  "engines": {
+    "node": "9.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "discord",
+    "boot"
+  ]
+}
