@@ -4,6 +4,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/mohitkyadav/coolme)
 
 [![Support](https://discordapp.com/api/guilds/522610943037931551/embed.png)](https://discord.gg/bJGQRJx)
+[![Discord Bots](https://discordbots.org/api/widget/status/521530934512713741.svg)](https://discordbots.org/bot/521530934512713741)
 
 [![Support](https://discordbots.org/api/widget/521530934512713741.svg?usernamecolor=FFFFFF&topcolor=000000)](https://discordbots.org/bot/521530934512713741)
 
