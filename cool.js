@@ -1,6 +1,8 @@
 var Discord = require('discord.io');
 var logger = require('winston');
-var coolify = require('./services/coolify')
+var axios = require('axios');
+
+const enhanceChat = require('./utils/enhanceChat');
 
 require('dotenv').config();
 
@@ -21,14 +23,13 @@ bot.on('ready', function (evt) {
 	logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', async function (user, userID, channelID, message, evt) {
 
 	if (message.substring(0, 1) == '!') {
 		let args = message.substring(1).split(' ');
 		const cmd = args[0];
     args = args.splice(1);
-    
-		switch (cmd) {
+    switch (cmd) {
 			case 'hello':
 				bot.sendMessage({
 					to: channelID,
@@ -42,10 +43,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				})
         break;
 			case 'cool':
-        bot.sendMessage({
-          to: channelID,
-          message: coolify.getCoolName(args[0])
-        })
+        await axios.get(`https://cool-name-api.glitch.me/coolify?name=${args[0]}/`).then(response => {
+          // console.log(response.data);
+          bot.sendMessage({
+            to: channelID,
+            message: enhanceChat.jsonToTable(response.data)
+          })
+        }).catch(err => console.log(err.response));
         break;
 		}
 	}
