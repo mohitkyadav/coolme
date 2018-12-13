@@ -1,5 +1,6 @@
 var Discord = require('discord.io');
 var logger = require('winston');
+var coolify = require('./services/coolify')
 
 require('dotenv').config();
 
@@ -25,21 +26,27 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (message.substring(0, 1) == '!') {
 		let args = message.substring(1).split(' ');
 		const cmd = args[0];
-
-		args = args.splice(1);
+    args = args.splice(1);
+    
 		switch (cmd) {
 			case 'hello':
 				bot.sendMessage({
 					to: channelID,
 					message: 'world!'
 				});
-			break;
+				break;
 			case 'yo':
 				bot.sendMessage({
-					to:channelID,
+					to: channelID,
 					message: 'lo! 😜'
 				})
-			break;
+        break;
+			case 'cool':
+        bot.sendMessage({
+          to: channelID,
+          message: coolify.getCoolName(args[0])
+        })
+        break;
 		}
 	}
 });
