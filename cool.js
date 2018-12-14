@@ -21,9 +21,9 @@ client.on('guildMemberAdd', member => {
 client.on('message', msg => {
   if (msg.content === 'ping') {
     msg.reply('pong');
-	} else if (message.content === 'what is my avatar' ||
-						 message.content === 'what\'s my avatar' ||
-						 message.content === 'how do i look') {
+	} else if (msg.content === 'what is my avatar' ||
+						 msg.content === 'what\'s my avatar' ||
+						 msg.content === 'how do i look') {
     message.reply("Great 👌 " + message.author.avatarURL);
   }
 });
