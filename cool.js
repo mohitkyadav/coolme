@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
-var axios = require('axios');
-
-const client = new Discord.Client();
+const axios = require('axios');
 
 const enhanceChat = require('./utils/enhanceChat');
 const helpText = 'try *!cool coolmyname*, for all commands click https://git.io/fpFgn .'
 
 require('dotenv').config();
+
+const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -14,54 +14,29 @@ client.on('ready', () => {
 
 client.login(process.env.TOKEN);
 
-client.on('message', msg => {
-  if (msg.content === '!help') {
-		msg.reply(helpText);
-	} else if (msg.content === '!hello') {
-		msg.reply('world! ha ha gotcha 😎');
-	} else if (msg.content === '!yo') {
-		msg.reply('lo! 😜');
+client.on('message', message => {
+  if (message.content === '!help') {
+		message.reply(helpText);
+	} else if (message.content === '!hello') {
+		message.reply('world! ha ha gotcha 😎');
+	} else if (message.content === '!yo') {
+		message.reply('lo! 😜');
 	} else if (
-		msg.content === 'what is my avatar' ||
-		msg.content === 'what\'s my avatar' ||
-		msg.content === 'how do i look') {
-    msg.reply("Great! 👌 " + msg.author.avatarURL);
-  }
+		message.content === 'what is my avatar' ||
+		message.content === 'what\'s my avatar' ||
+		message.content === 'how do i look') {
+    message.reply('Great! 👌 ' + message.author.avatarURL);
+  } else if (message.content.startsWith('!cool')) {
+		const args = (message.content.split('!cool').pop()).trim();
+		if(args.length >= 1) {
+			axios.get(`https://cool-name-api.glitch.me/coolify?name=${args}/`).then(response => {
+				message.reply(enhanceChat.jsonToTable(response.data));	
+			}).catch(err => console.log(err.response));
+		} else {
+			message.reply('Expected at least 1 param after !cool. i.e   **!cool text text text....**');
+		}
+	}
 });
-
-
-// bot.on('message', async function (user, userID, channelID, message, evt) {
-
-// 	if (message.substring(0, 1) == '!') {
-// 		let args = message.substring(1).split(' ');
-// 		const cmd = args[0];
-//     args = args.splice(1);
-//     switch (cmd) {
-
-// 			case 'hello':
-// 				bot.sendMessage({
-// 					to: channelID,
-// 					message: 'world!'
-// 				});
-// 				break;
-// 			case 'yo':
-// 				bot.sendMessage({
-// 					to: channelID,
-// 					message: 'lo! 😜'
-// 				})
-//         break;
-// 			case 'cool':
-//         await axios.get(`https://cool-name-api.glitch.me/coolify?name=${args[0]}/`).then(response => {
-//           // console.log(response.data);
-//           bot.sendMessage({
-//             to: channelID,
-//             message: enhanceChat.jsonToTable(response.data)
-//           })
-//         }).catch(err => console.log(err.response));
-//         break;
-// 		}
-// 	}
-// });
 
 // only cause deployment process doesn't stuck... 😒
 require('http').createServer().listen(3000);
