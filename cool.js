@@ -14,17 +14,18 @@ client.on('ready', () => {
 
 client.login(process.env.TOKEN);
 
-client.on('guildMemberAdd', member => {
-  channel.send(`Welcome to the server, ${member}`);
-});
-
 client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
-	} else if (msg.content === 'what is my avatar' ||
-						 msg.content === 'what\'s my avatar' ||
-						 msg.content === 'how do i look') {
-    message.reply("Great 👌 " + message.author.avatarURL);
+  if (msg.content === '!help') {
+		msg.reply(helpText);
+	} else if (msg.content === '!hello') {
+		msg.reply('world! ha ha gotcha 😎');
+	} else if (msg.content === '!yo') {
+		msg.reply('lo! 😜');
+	} else if (
+		msg.content === 'what is my avatar' ||
+		msg.content === 'what\'s my avatar' ||
+		msg.content === 'how do i look') {
+    msg.reply("Great! 👌 " + msg.author.avatarURL);
   }
 });
 
@@ -36,12 +37,7 @@ client.on('message', msg => {
 // 		const cmd = args[0];
 //     args = args.splice(1);
 //     switch (cmd) {
-// 			case 'help':
-// 				bot.sendMessage({
-// 					to: channelID,
-// 					message: helpText
-// 				});
-// 				break;
+
 // 			case 'hello':
 // 				bot.sendMessage({
 // 					to: channelID,
