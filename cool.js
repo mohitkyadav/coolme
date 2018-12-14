@@ -3,6 +3,7 @@ var logger = require('winston');
 var axios = require('axios');
 
 const enhanceChat = require('./utils/enhanceChat');
+const helpText = 'try *!cool coolmyname*, for all commands click [here](https://github.com/mohitkyadav/coolme#list-of-supported-commands).'
 
 require('dotenv').config();
 
@@ -30,6 +31,12 @@ bot.on('message', async function (user, userID, channelID, message, evt) {
 		const cmd = args[0];
     args = args.splice(1);
     switch (cmd) {
+			case 'help':
+				bot.sendMessage({
+					to: channelID,
+					message: helpText
+				});
+				break;
 			case 'hello':
 				bot.sendMessage({
 					to: channelID,
