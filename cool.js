@@ -18,6 +18,7 @@ client.on('message', message => {
   if (message.content === '!help') {
 		message.reply(helpText);
 	} else if (message.content === '!hello') {
+		// TODO: put all static replies in one place
 		message.reply('world! ha ha gotcha 😎');
 	} else if (message.content === '!yo') {
 		message.reply('lo! 😜');

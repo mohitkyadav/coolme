@@ -8,7 +8,7 @@
 [![Support](https://discordbots.org/api/widget/521530934512713741.svg?usernamecolor=FFFFFF&topcolor=000000)](https://discordbots.org/bot/521530934512713741)
 
 
-## Deployment
+## Deployable on
 ```
 glitch / zeit / heroku.
 ```
