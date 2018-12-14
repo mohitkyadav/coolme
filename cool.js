@@ -3,7 +3,7 @@ var logger = require('winston');
 var axios = require('axios');
 
 const enhanceChat = require('./utils/enhanceChat');
-const helpText = 'try *!cool coolmyname*, for all commands click [here](https://github.com/mohitkyadav/coolme#list-of-supported-commands).'
+const helpText = 'try *!cool coolmyname*, for all commands click https://git.io/fpFgn .'
 
 require('dotenv').config();
 
