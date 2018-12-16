@@ -1,3 +1,5 @@
+const { Client, RichEmbed } = require('discord.js');
+
 enhanceChat = {};
 
 enhanceChat.jsonToTable = function (json) {
@@ -10,6 +12,14 @@ enhanceChat.jsonToTable = function (json) {
     }
   }
   return msg;
+}
+
+enhanceChat.embedStatic = function (msg='Something\'s not alright. :/', title='', color='#7c4dff') {
+  const embed = new RichEmbed()
+    .setTitle(title)
+    .setColor(color)
+    .setDescription(msg);
+  return embed;
 }
 
 module.exports = enhanceChat;

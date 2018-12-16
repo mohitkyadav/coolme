@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const axios = require('axios');
 
 const enhanceChat = require('./utils/enhanceChat');
-const helpText = 'try *!cool coolmyname*, for all commands click https://git.io/fpFgn .'
+const helpText = 'Try *!cool coolmyname*, for all commands click [here](https://git.io/fpFgn).'
 
 require('dotenv').config();
 
@@ -16,10 +16,9 @@ client.login(process.env.TOKEN);
 
 client.on('message', message => {
   if (message.content === '!help') {
-		message.reply(helpText);
+		message.reply(enhanceChat.embedStatic(helpText));
 	} else if (message.content === '!hello') {
-		// TODO: put all static replies in one place
-		message.reply('world! ha ha gotcha 😎');
+		message.reply(enhanceChat.embedStatic('world! ha ha gotcha 😎'));
 	} else if (message.content === '!yo') {
 		message.reply('lo! 😜');
 	} else if (
@@ -31,7 +30,8 @@ client.on('message', message => {
 		const args = (message.content.split('!cool').pop()).trim();
 		if(args.length >= 1) {
 			axios.get(`https://cool-name-api.glitch.me/coolify?name=${args}/`).then(response => {
-				message.reply(enhanceChat.jsonToTable(response.data));	
+				const coolNames = enhanceChat.jsonToTable(response.data);
+				message.reply(enhanceChat.embedStatic(coolNames, '', '#00b8d4'));	
 			}).catch(err => console.log(err.response));
 		} else {
 			message.reply('Expected at least 1 param after !cool. i.e   **!cool text text text....**');
