@@ -19,8 +19,8 @@ glitch / zeit / heroku.
 |---------|-----------|--------|
 |*!hello*  | **world!**| ✔ |
 |*!yo*    | **lo!😜** | ✔ |
-|*!cool*  | __**All cool strings**__  | ✔ |
-|*!uncool*| __**original string**__ | ✔ |
+|*!cool `<string>`*  | __**All cool strings**__  | ✔ |
+|*!uncool `<string>`*| __**original string**__ | ✔ |
 
 >!cool wolverine
 
