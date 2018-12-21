@@ -17,15 +17,15 @@ client.login(process.env.TOKEN);
 client.on('message', message => {
   if (message.content === '!help') {
 
-		message.reply(enhanceChat.embedStatic(helpText));
+		message.channel.send(enhanceChat.embedStatic(helpText));
 
 	} else if (message.content === '!hello') {
 
-		message.reply(enhanceChat.embedStatic('world! ha ha gotcha 😎'));
+		message.channel.send(enhanceChat.embedStatic('world! ha ha gotcha 😎'));
 
 	} else if (message.content === '!yo') {
 
-		message.reply('lo! 😜');
+		message.channel.send('lo! 😜');
 
 	} else if (
 
@@ -72,14 +72,14 @@ client.on('message', message => {
 
 	} else if (message.content.startsWith('!status')) {
 		axios.get('https://cool-name-api.glitch.me/coolify?name=only4/').then(response => {
-			message.reply(enhanceChat.embedStatic(
+			message.channel.send(enhanceChat.embedStatic(
 				'cool-name-api working status 200 ✅',
 				'Status 200',
 				'#00ec3c',
 			));
 		}).catch(err => {
 			console.log(err.response)
-			message.reply(enhanceChat.embedStatic(
+			message.channel.send(enhanceChat.embedStatic(
 				'cool-name-api not working, ❌',
 				'Status ' + err.response.status,
 				'#bf0000',
