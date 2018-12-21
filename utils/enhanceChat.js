@@ -7,12 +7,21 @@ enhanceChat.jsonToTable = function (json) {
   let msg = '';
   for (var key in json) {
     if (json.hasOwnProperty(key)) {
-      // TODO: That's a jugad 😉, 
+      // TODO: That's a jugad 😉,
       // TODO: find out why there's '/' in response
       msg += '**' + json[key].slice(0, -1) + '**\n\n';
     }
   }
   return msg;
+}
+
+enhanceChat.jsonToList = function (json) {
+	let list = '';
+	json.forEach(element => {
+		list += element;
+		list += '\n';
+	});
+	return list;
 }
 
 enhanceChat.embedStatic = function (

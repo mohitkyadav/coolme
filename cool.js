@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const axios = require('axios');
+const dns = require('dns');
 
 const enhanceChat = require('./utils/enhanceChat');
 const helpText = 'Try *!cool coolmyname*, for all commands click [here](https://git.io/fpFgn).'
@@ -85,6 +86,37 @@ client.on('message', message => {
 				'#bf0000',
 			));
 		});
+	}
+	else if (message.content.startsWith('!ip')) {
+		const args = (message.content.split('!ip').pop()).trim();
+		if(args.length >= 1) {
+			dns.resolve4(args, function (err, addresses) {
+				if (err) {
+					message.reply(enhanceChat.embedStatic(
+						'Check your url, maybe you are doing it wrong way',
+						'Nothing found',
+						'#ae0000'
+					))
+				} else {
+					console.log('addresses: ' + JSON.stringify(addresses));
+
+					message.reply(enhanceChat.embedStatic(
+						enhanceChat.jsonToList(addresses),
+						'Here\'s the ip address',
+						'#00ec3c',
+						''
+					));
+				}
+			});
+		} else {
+			message.reply(enhanceChat.embedStatic(
+				'Also enter url after !ip. i.e   **!ip url**',
+				'Error',
+				'#FF6347',
+				'',
+        'https://git.io/fpFgn'
+      ));
+		}
 	}
 });
 

@@ -22,6 +22,7 @@ glitch / zeit / heroku.
 |*!status*| **server status(200/404)**|✔|
 |*!cool `<string>`*  | __**All cool strings**__  | ✔ |
 |*!uncool `<string>`*| __**original string**__ | ✔ |
+|*!ip `<url>`*| __**ip address of the url**__| ✔ |
 
 >!cool wolverine
 
