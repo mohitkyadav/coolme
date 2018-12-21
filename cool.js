@@ -50,7 +50,8 @@ client.on('message', message => {
 				'Error',
 				'#FF6347',
 				'',
-				'https://git.io/fpFgn'));
+        'https://git.io/fpFgn'
+      ));
 		}
 	
 	} else if (message.content.startsWith('!uncool')) {

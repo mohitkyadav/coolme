@@ -3,12 +3,12 @@ const { Client, RichEmbed } = require('discord.js');
 enhanceChat = {};
 
 enhanceChat.jsonToTable = function (json) {
-  // console.log(json);
+
   let msg = '';
   for (var key in json) {
     if (json.hasOwnProperty(key)) {
-      // console.log(key + ": " + json[key]);
-      // TODO: That's a jugad, find out why there's forward '/' in response
+      // TODO: That's a jugad 😉, 
+      // TODO: find out why there's '/' in response
       msg += '**' + json[key].slice(0, -1) + '**\n\n';
     }
   }
