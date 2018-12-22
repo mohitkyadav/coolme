@@ -39,4 +39,53 @@ enhanceChat.embedStatic = function (
   return embed;
 }
 
+enhanceChat.embedWeather = function (data) {
+
+	const cityName = data['name'];
+	const thumbnail = data['weather'][0]['icon'];
+	const fields = [
+		{
+			'name': 'Temperature',
+			'value' : data['main']['temp'] + '° C',
+			'inline': true
+		},
+		{
+			'name': 'Conditions',
+			'value': data['weather'][0]['main'],
+			'inline': true
+		},
+		{
+			'name': 'Humidity',
+			'value': data['main']['humidity'] + '%',
+			'inline': true
+		},
+		{
+			'name': 'Pressure',
+			'value': data['main']['pressure'] + ' mb',
+			'inline': true
+		},
+		{
+			'name': 'Longitude',
+			'value': data['coord']['lon'] + '° N',
+			'inline': true
+		},
+		{
+			'name': 'Latitude ',
+			'value': data['coord']['lat'] + '° E',
+			'inline': true
+		}
+	]
+	const color = '#00ec3c';
+
+  let embed = new RichEmbed()
+    .setTitle(`Weather in ${cityName}`)
+    .setColor(color)
+		.setThumbnail(`http://openweathermap.org/img/w/${thumbnail}.png`);
+
+	for (let i = 0; i < fields.length; i++) {
+		embed.addField(fields[i]['name'], fields[i]['value'], fields[i]['inline']);
+	}
+  return embed;
+}
+
 module.exports = enhanceChat;

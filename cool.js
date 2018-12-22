@@ -2,10 +2,12 @@ const Discord = require('discord.js');
 const axios = require('axios');
 const dns = require('dns');
 
+require('dotenv').config();
+
 const enhanceChat = require('./utils/enhanceChat');
+const OWKEY = process.env.OWAPI;
 const helpText = 'Try *!cool coolmyname*, for all commands click [here](https://git.io/fpFgn).'
 
-require('dotenv').config();
 
 const client = new Discord.Client();
 
@@ -32,7 +34,7 @@ client.on('message', message => {
 		message.content === 'what is my avatar' ||
 		message.content === 'what\'s my avatar' ||
 		message.content === 'how do i look') {
-    message.reply(enhanceChat.embedStatic('Your avatar', 'Great! 👌 ', '#00b8d4', message.author.avatarURL));
+    message.reply(enhanceChat.embedStatic('Your avatar ', 'Great! 👌 ', '#00b8d4', message.author.avatarURL));
 
 	} else if (message.content.startsWith('!cool')) {
 
@@ -120,25 +122,30 @@ client.on('message', message => {
 
 		const args = (message.content.split('!weather').pop()).trim();
 		if(args.length >= 1) {
-			dns.resolve4(args, function (err, addresses) {
-				if (err) {
+			axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${args}&APPID=${OWKEY}&units=metric`).then(response => {
+
+				message.reply(enhanceChat.embedWeather(response.data));
+
+			}).catch(err => {
+				console.log(err.response);
+				if (err.response.status == 404) {
 					message.reply(enhanceChat.embedStatic(
-						'Check your url, maybe you are doing it the wrong way',
-						'Nothing found',
+						`City named ${args}, not found`,
+						'Oops...',
 						'#ae0000'
-					))
+					));
 				} else {
 					message.reply(enhanceChat.embedStatic(
-						enhanceChat.jsonToList(addresses),
-						'Here\'s the ip address',
-						'#00ec3c',
-						''
+						'Something went wrong, please contact the dev',
+						'Oops...',
+						'#ae0000'
 					));
 				}
 			});
+
 		} else {
 			message.reply(enhanceChat.embedStatic(
-				'Also enter location i.e **!!weather delhi**',
+				'Also enter location i.e **!weather delhi**',
 				'Error',
 				'#FF6347',
 				'',
