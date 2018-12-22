@@ -29,7 +29,6 @@ client.on('message', message => {
 		message.channel.send('lo! 😜');
 
 	} else if (
-
 		message.content === 'what is my avatar' ||
 		message.content === 'what\'s my avatar' ||
 		message.content === 'how do i look') {
@@ -72,9 +71,10 @@ client.on('message', message => {
 		}
 
 	} else if (message.content.startsWith('!status')) {
+
 		axios.get('https://cool-name-api.glitch.me/coolify?name=only4/').then(response => {
 			message.channel.send(enhanceChat.embedStatic(
-				'cool-name-api working status 200 ✅',
+				'cool-name-api working, status 200 ✅',
 				'Status 200',
 				'#00ec3c',
 			));
@@ -86,8 +86,8 @@ client.on('message', message => {
 				'#bf0000',
 			));
 		});
-	}
-	else if (message.content.startsWith('!ip')) {
+	}	else if (message.content.startsWith('!ip')) {
+
 		const args = (message.content.split('!ip').pop()).trim();
 		if(args.length >= 1) {
 			dns.resolve4(args, function (err, addresses) {
@@ -98,8 +98,6 @@ client.on('message', message => {
 						'#ae0000'
 					))
 				} else {
-					console.log('addresses: ' + JSON.stringify(addresses));
-
 					message.reply(enhanceChat.embedStatic(
 						enhanceChat.jsonToList(addresses),
 						'Here\'s the ip address',
@@ -117,8 +115,39 @@ client.on('message', message => {
         'https://git.io/fpFgn'
       ));
 		}
+
+	} else if (message.content.startsWith('!weather')) {
+
+		const args = (message.content.split('!weather').pop()).trim();
+		if(args.length >= 1) {
+			dns.resolve4(args, function (err, addresses) {
+				if (err) {
+					message.reply(enhanceChat.embedStatic(
+						'Check your url, maybe you are doing it the wrong way',
+						'Nothing found',
+						'#ae0000'
+					))
+				} else {
+					message.reply(enhanceChat.embedStatic(
+						enhanceChat.jsonToList(addresses),
+						'Here\'s the ip address',
+						'#00ec3c',
+						''
+					));
+				}
+			});
+		} else {
+			message.reply(enhanceChat.embedStatic(
+				'Also enter location i.e **!!weather delhi**',
+				'Error',
+				'#FF6347',
+				'',
+        'https://git.io/fpFgn'
+      ));
+		}
+
 	}
 });
 
-// only cause deployment process doesn't stuck... 😒
+// only for the sake of deployment process... 😒
 require('http').createServer().listen(3000);
