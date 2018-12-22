@@ -90,8 +90,20 @@ client.on('message', message => {
 		});
 	}	else if (message.content.startsWith('!ip')) {
 
-		const args = (message.content.split('!ip').pop()).trim();
+		let args = (message.content.split('!ip').pop()).trim();
+
+		if (args.startsWith('https://')) {
+			args = (args.split('https://').pop()).trim()
+		} else if (args.startsWith('http://')) {
+			args = (args.split('http://').pop()).trim()
+		}
+
+		if (args.endsWith('/')) {
+			args = args.substring(0, args.length-1);
+		}
+
 		if(args.length >= 1) {
+
 			dns.resolve4(args, function (err, addresses) {
 				if (err) {
 					message.reply(enhanceChat.embedStatic(
