@@ -7,18 +7,6 @@ const API_BASE_URL = BASE_URL + 'api/';
 maHelper = {};
 uriHelper = {};
 
-uriHelper.getAnime = function(id, detailed = true) {
-	return `${API_BASE_URL}anime/${id}/${detailed ? 'detailed' : ''}`;
-}
-
-uriHelper.getEpisode = function(anime_slug, episode) {
-	return `${BASE_URL}anime/watch/${anime_slug}/${episode}`;
-}
-
-uriHelper.getReleases = function() {
-	return `${API_BASE_URL}releases`;
-}
-
 uriHelper.getTrending = function() {
 	return `${API_BASE_URL}anime/trending`;
 }
