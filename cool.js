@@ -4,6 +4,7 @@ const dns = require('dns');
 
 require('dotenv').config();
 
+const maService = require('./utils/maService');
 const enhanceChat = require('./utils/enhanceChat');
 const OWKEY = process.env.OWAPI;
 const helpText = 'Try *!cool coolmyname*, for all commands click [here](https://git.io/fpFgn).'
@@ -180,6 +181,13 @@ client.on('message', message => {
       ));
 		}
 
+	} else if (message.content.startsWith('!trending on ma')) {
+		message.channel.send(enhanceChat.embedStatic(
+			'Fetching today\'s trending from masterani.me',
+			'Please wait upto 5 seconds',
+			'#ffff04'
+		));
+		maHelper.trending(message);
 	}
 });
 
