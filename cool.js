@@ -88,6 +88,21 @@ client.on('message', message => {
 				'#bf0000',
 			));
 		});
+		axios.get(`http://api.openweathermap.org/data/2.5/weather?q=delhi&APPID=${OWKEY}&units=metric`).then(response => {
+			message.channel.send(enhanceChat.embedStatic(
+				'Open-Weather API working, status 200 ✅',
+				'Status 200',
+				'#00ec3c',
+			));
+		}).catch(err => {
+			console.log(err.response)
+			message.channel.send(enhanceChat.embedStatic(
+				'Open-Weather API not working, ❌',
+				'Status ' + err.response.status,
+				'#bf0000',
+			));
+		});
+
 	}	else if (message.content.startsWith('!ip')) {
 
 		let args = (message.content.split('!ip').pop()).trim();
