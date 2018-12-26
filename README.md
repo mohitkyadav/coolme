@@ -23,7 +23,13 @@ glitch / zeit / heroku.
 |*!cool `<string>`*  | __**All cool strings**__  | ✔ |
 |*!uncool `<string>`*| __**original string**__ | ✔ |
 |*!weather `<city_name>`*| __**weather information**__ | ✔ |
+|*!trending on `<service_name>`*| __**Top trending on `<service_name>`**__|✔|
 |*!ip `<url>`*| __**ip address of the url**__| ✔ |
+
+### `<service_name>`
+- `ma` - Masteranime
+- `gh` - GitHub
+- `tw` - Twitter
 
 >!cool wolverine
 
