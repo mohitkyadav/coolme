@@ -93,10 +93,10 @@ enhanceChat.embedTrendingAnime = function(popular_today) {
 	for (let i = 0; i < 5; i++) {
 		let embed = new RichEmbed()
 			.setTitle(`${popular_today[i].title}`)
-			.setDescription(`${popular_today[i].total} Views`)
+			.setDescription(`Views - **${popular_today[i].total}**`)
 			.setColor('#e50914')
 			.setThumbnail(`https://cdn.masterani.me/poster/1/${popular_today[i].poster}`)
-			.addField('Watch it on', `[MASTERANIME](https://www.masterani.me/anime/info/${popular_today[i].slug})`);
+			.addField('Watch it now on', `[MASTERANIME](https://www.masterani.me/anime/info/${popular_today[i].slug})`);
 			trendingAnime.push(embed);
 	}
 	return trendingAnime;
