@@ -14,7 +14,8 @@
     "axios": "^0.18.0",
     "cloudscraper": "^2.0.0",
     "discord.js": "^11.4.2",
-    "dotenv": "^6.2.0"
+    "dotenv": "^6.2.0",
+    "twit": "^2.2.11"
   },
   "devDependencies": {
     "eslint": "^5.10.0",

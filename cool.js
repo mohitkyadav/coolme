@@ -5,6 +5,7 @@ const dns = require('dns');
 require('dotenv').config();
 
 const maService = require('./utils/maService');
+const twHelper = require('./utils/twService');
 const enhanceChat = require('./utils/enhanceChat');
 const OWKEY = process.env.OWAPI;
 const helpText = 'Try *!cool coolmyname*, for all commands click [here](https://git.io/fpFgn).'
@@ -188,6 +189,8 @@ client.on('message', message => {
 			'#ffff04'
 		));
 		maHelper.trending(message);
+	} else if (message.content.startsWith('!trending on tw')) {
+		twHelper.trending(message);
 	}
 });
 

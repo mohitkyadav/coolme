@@ -102,4 +102,27 @@ enhanceChat.embedTrendingAnime = function(popular_today) {
 	return trendingAnime;
 }
 
+enhanceChat.embedTrendingTags = function(data) {
+	let embeddedMessage = new RichEmbed()
+		.setTitle(`Trending ${data.locations[0].name}`)
+		.setThumbnail(`https://logo.clearbit.com/twitter.com`)
+		.setColor('#1da1f2');
+
+	let fieldsCount = 0
+	while (embeddedMessage.fields.length < 10) {
+		if (data.trends[fieldsCount].promoted_content || !data.trends[fieldsCount].tweet_volume) {
+			fieldsCount++;
+			continue;
+		} else {
+			embeddedMessage.addField(
+				data.trends[fieldsCount].name,
+				`${data.trends[fieldsCount].tweet_volume} - [Tweets](${data.trends[fieldsCount].url})`,
+				false
+			);
+			fieldsCount++;
+		}
+	}
+	return embeddedMessage;
+}
+
 module.exports = enhanceChat;
