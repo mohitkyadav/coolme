@@ -118,9 +118,27 @@ enhanceChat.embedTrendingAnime = function(popular_today) {
 	return trendingAnime;
 }
 
+enhanceChat.embedTrendingRepos = function (repos) {
+	let trendingRepos = new RichEmbed()
+		.setTitle('⚡ Trending on GitHub')
+		.setDescription('Showing the top 10 trending repositories on GitHub')
+		.setURL('https://github.com/trending/')
+		.setColor('#80ff00')
+		.setThumbnail('https://logo.clearbit.com/githubuniverse.com');
+
+	for (let i = 0; i < Math.min(10, repos.length); i++) {
+		trendingRepos.addField(
+			`${repos[i].author}/${repos[i].name}`,
+			`${repos[i].language} - ${repos[i].stars} ⭐ - ${repos[i].forks} forks - [↗](${repos[i].url})`,
+			false
+		);
+	}
+	return trendingRepos;
+}
+
 enhanceChat.embedTrendingTags = function(data) {
 	let embeddedMessage = new RichEmbed()
-		.setTitle(`Trending ${data.locations[0].name}`)
+		.setTitle(`⚡ Trending ${data.locations[0].name}`)
 		.setThumbnail(`https://logo.clearbit.com/twitter.com`)
 		.setColor('#1da1f2');
 

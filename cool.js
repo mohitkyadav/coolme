@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const maService = require('./utils/maService');
 const twHelper = require('./utils/twService');
+const ghHelper = require('./utils/ghService');
 const enhanceChat = require('./utils/enhanceChat');
 const OWKEY = process.env.OWAPI;
 
@@ -189,6 +190,8 @@ client.on('message', message => {
 		maHelper.trending(message);
 	} else if (message.content.startsWith('!trending on tw')) {
 		twHelper.trending(message);
+	} else if (message.content.startsWith('!trending on gi') || message.content.startsWith('!trending on gh')) {
+		ghHelper.trending(message);
 	}
 });
 
