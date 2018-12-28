@@ -88,6 +88,22 @@ enhanceChat.embedWeather = function (data) {
   return embed;
 }
 
+enhanceChat.embedHelp = function() {
+	let embed = new RichEmbed()
+		.setTitle(`Coolme bot - Commands list`)
+		.setColor(`#ffff00`)
+		.setURL(`https://git.io/fpFgn`)
+		.setFooter(`For more commands click go to https://git.io/fpFgn`)
+		.addField('😎 Coolify text and nickames', '`!cool string`', false)
+		.addField('😶 Uncoolify cool text', '`!uncool string`', false)
+		.addField('☁ Weather', '`!weather city`', false)
+		.addField('🎌 Trending on MASTERANIME', '`!trending on ma`', false)
+		.addField('🐤 Trending on Twitter', '`!trending on tw`', false)
+		.addField('🐱‍ Trending on GitHub', '`!trending on gh`', false);
+
+	return embed;
+}
+
 enhanceChat.embedTrendingAnime = function(popular_today) {
 	let trendingAnime = [];
 	for (let i = 0; i < 5; i++) {

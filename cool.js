@@ -8,8 +8,6 @@ const maService = require('./utils/maService');
 const twHelper = require('./utils/twService');
 const enhanceChat = require('./utils/enhanceChat');
 const OWKEY = process.env.OWAPI;
-const helpText = 'Try *!cool coolmyname*, for all commands click [here](https://git.io/fpFgn).'
-
 
 const client = new Discord.Client();
 
@@ -22,7 +20,7 @@ client.login(process.env.TOKEN);
 client.on('message', message => {
   if (message.content === '!help') {
 
-		message.channel.send(enhanceChat.embedStatic(helpText));
+		message.channel.send(enhanceChat.embedHelp());
 
 	} else if (message.content === '!hello') {
 
