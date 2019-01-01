@@ -18,6 +18,16 @@ client.on('ready', () => {
 
 client.login(process.env.TOKEN);
 
+client.on('guildMemberAdd', member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find(ch => ch.name === 'general');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(`${member} just arrived from the future, welcome! 🙏`);
+});
+
+
 client.on('message', message => {
   if (message.content === '!help') {
 
