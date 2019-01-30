@@ -25,6 +25,10 @@ glitch / zeit / heroku.
 |*!weather `<city_name>`*| __**weather information**__ | ✔ |
 |*!trending on `<service_name>`*| __**Top trending on `<service_name>`**__|✔|
 |*!ip `<url>`*| __**ip address of the url**__| ✔ |
+|*!encrypt `text` `key`*| __**Encrypted text**__| ⏰ |
+|*!decrypt `text` `key`*| __**Decrypted text**__| ⏰ |
+|*!card `gh_profile_url`*| __**Embeded GitHub Card**__| ⏰ |
+
 
 ### `<service_name>`
 - `ma` - Masteranime
