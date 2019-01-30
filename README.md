@@ -30,6 +30,7 @@ glitch / zeit / heroku.
 - `ma` - Masteranime
 - `gh` - GitHub
 - `tw` - Twitter
+- `yt` - YouTube
 
 >!cool wolverine
 
