@@ -99,7 +99,8 @@ enhanceChat.embedHelp = function() {
 		.addField('☁ Weather', '`!weather city`', false)
 		.addField('🎌 Trending on MASTERANIME', '`!trending on ma`', false)
 		.addField('🐤 Trending on Twitter', '`!trending on tw`', false)
-		.addField('🐱‍ Trending on GitHub', '`!trending on gh`', false);
+		.addField('🐱‍ Trending on GitHub', '`!trending on gh`', false)
+		.addField('📺 Trending on YouTube', '`!trending on yt`', false);
 
 	return embed;
 }
@@ -136,7 +137,17 @@ enhanceChat.embedTrendingRepos = function (repos) {
 	return trendingRepos;
 }
 
-enhanceChat.embedTrendingTags = function(data) {
+enhanceChat.embedTrendingVideos = function (items) {
+
+	let trendingVideos = [];
+	for (let i = 0; i < 5; i++) {
+		trendingVideos.push(`https://www.youtube.com/watch?v=${items[i].id}`);
+	}
+
+	return trendingVideos;
+}
+
+enhanceChat.embedTrendingTags = function (data) {
 	let embeddedMessage = new RichEmbed()
 		.setTitle(`⚡ Trending ${data.locations[0].name}`)
 		.setThumbnail(`https://logo.clearbit.com/twitter.com`)

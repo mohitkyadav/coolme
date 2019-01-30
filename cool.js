@@ -7,8 +7,11 @@ require('dotenv').config();
 const maService = require('./utils/maService');
 const twHelper = require('./utils/twService');
 const ghHelper = require('./utils/ghService');
+const ytHelper = require('./utils/ytService');
 const enhanceChat = require('./utils/enhanceChat');
+
 const OWKEY = process.env.OWAPI;
+const YTKEY = process.env.YTKEY;
 
 const client = new Discord.Client();
 
@@ -202,6 +205,8 @@ client.on('message', message => {
 		twHelper.trending(message);
 	} else if (message.content.startsWith('!trending on gi') || message.content.startsWith('!trending on gh')) {
 		ghHelper.trending(message);
+	} else if (message.content.startsWith('!trending on youtube') || message.content.startsWith('!trending on yt') || message.content.startsWith('!trending on yo')) {
+		ytHelper.trending(message, YTKEY);
 	}
 });
 
