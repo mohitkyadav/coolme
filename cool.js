@@ -211,4 +211,8 @@ client.on('message', message => {
 });
 
 // only for the sake of deployment process... 😒
-require('http').createServer().listen(3000);
+require('http').createServer((request, response) => {
+	response.writeHead(200, {"Content-Type": "text/html"});
+  response.write("Lost?");
+  response.end();
+}).listen(3000);
