@@ -194,19 +194,20 @@ client.on('message', message => {
       ));
 		}
 
-	} else if (message.content.startsWith('!trending on ma')) {
+	} else if (message.content.startsWith('!mat')) {
 		message.channel.send(enhanceChat.embedStatic(
 			'Fetching today\'s trending from masterani.me',
 			'Please wait upto 5 seconds',
 			'#ffff04'
 		));
 		maHelper.trending(message);
-	} else if (message.content.startsWith('!trending on tw')) {
+	} else if (message.content.startsWith('!twt')) {
 		twHelper.trending(message);
-	} else if (message.content.startsWith('!trending on gi') || message.content.startsWith('!trending on gh')) {
+	} else if (message.content.startsWith('!ght') || message.content.startsWith('!trending on gh')) {
 		ghHelper.trending(message);
-	} else if (message.content.startsWith('!trending on youtube') || message.content.startsWith('!trending on yt') || message.content.startsWith('!trending on yo')) {
-		ytHelper.trending(message, YTKEY);
+	} else if (message.content.startsWith('!ytt')) {
+		const args = (message.content.split(' '));
+		ytHelper.trending(message, YTKEY, args[1]);
 	}
 });
 
