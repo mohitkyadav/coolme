@@ -97,10 +97,10 @@ enhanceChat.embedHelp = function() {
 		.addField('😎 Coolify text and nickames', '`!cool string`', false)
 		.addField('😶 Uncoolify cool text', '`!uncool string`', false)
 		.addField('☁ Weather', '`!weather city`', false)
-		.addField('🎌 Trending on MASTERANIME', '`!trending on ma`', false)
-		.addField('🐤 Trending on Twitter', '`!trending on tw`', false)
-		.addField('🐱‍ Trending on GitHub', '`!trending on gh`', false)
-		.addField('📺 Trending on YouTube', '`!trending on yt`', false);
+		.addField('🎌 Trending on MASTERANIME', '`!mat`', false)
+		.addField('🐤 Trending on Twitter', '`!twt`', false)
+		.addField('🐱‍ Trending on GitHub', '`!ght`', false)
+		.addField('📺 Trending on YouTube', '`!ytt`', false);
 
 	return embed;
 }
