@@ -156,6 +156,13 @@ enhanceChat.embedCard = function (user) {
 		card.addField('Bio', user.bio, true);
 	}
 	if(user.company) {
+		let orgs = (user.company.split(' '));
+		// orgs.forEach(elem => {
+		// 	elem = elem.substr(1);
+		// 	console.log(elem);
+		// });
+		// console.log(orgs);
+
 		card.addField('Organizations', user.company, false);
 	}
 	card.addField('Public Repos', user.public_repos, true);
