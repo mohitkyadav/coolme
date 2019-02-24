@@ -49,7 +49,7 @@ glitch / zeit / heroku.
 
 > !gcard mohitkyadav
 
-![mohitkyadav GitHub card](./demo/mky_card.jpg)
+<img src="./demo/mky_card.jpg" alt="mky" width="400"/>
 
 > !gcard google
 
