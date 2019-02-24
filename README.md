@@ -53,4 +53,5 @@ glitch / zeit / heroku.
 
 > !gcard google
 
-![google GitHub card](./demo/g_card.jpg)
+<img src="./demo/g_card.jpg" alt="g" width="400"/>
+
