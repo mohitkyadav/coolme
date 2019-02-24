@@ -20,7 +20,10 @@ ghHelper.trending = async function(message) {
 
 ghHelper.getUserCard = async function(username, message) {
 	await axios.get(`https://api.github.com/users/${username}`).then(response => {
-		message.channel.send(enhanceChat.embedCard(response.data));
+		ghUser = response.data;
+	}).catch(err => console.log(err));
+	await axios.get(`https://github-contributions-api.herokuapp.com/${username}/count`).then(res => {
+		message.channel.send(enhanceChat.embedCard(ghUser, res.data));
 	}).catch(err => console.log(err));
 }
 

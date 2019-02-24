@@ -138,7 +138,7 @@ enhanceChat.embedTrendingRepos = function (repos) {
 	return trendingRepos;
 }
 
-enhanceChat.embedCard = function (user) {
+enhanceChat.embedCard = function (user, contri_data) {
 	let d = new Date(user.created_at);
 	let card = new RichEmbed()
 		.setTitle(user.login)
@@ -156,14 +156,13 @@ enhanceChat.embedCard = function (user) {
 		card.addField('Bio', user.bio, true);
 	}
 	if(user.company) {
-		let orgs = (user.company.split(' '));
-		// orgs.forEach(elem => {
-		// 	elem = elem.substr(1);
-		// 	console.log(elem);
-		// });
-		// console.log(orgs);
-
-		card.addField('Organizations', user.company, false);
+		let orgs = (user.company.trim().split(' '));
+		final = ''
+		orgs.forEach(elem => {
+			final += `[${elem}](https://github.com/${elem.substring(1, elem.length)}) `;
+		});
+		// console.log(final)
+		card.addField('Organizations', final, false);
 	}
 	card.addField('Public Repos', user.public_repos, true);
 	card.addField('Public Gists', user.public_gists, true);
@@ -174,6 +173,15 @@ enhanceChat.embedCard = function (user) {
 	}
 	if(user.blog) {
 		card.addField('Site', user.blog, false);
+	}
+	if(user.type == 'User') {
+		fieldTitle = 'Contributions Today'
+		var today = new Date();
+		var date = today.getDate();
+		var m = today.getMonth() + 1;
+		var y = today.getFullYear();
+		contri_data['data'][y][m][date] ? count = contri_data['data'][y][m][date] : count = 'Not available for today'
+		card.addField(fieldTitle, count, true)
 	}
 	if(user.email) {
 		card.addField('email', user.email, false);
