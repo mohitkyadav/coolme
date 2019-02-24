@@ -184,7 +184,7 @@ enhanceChat.embedCard = function (user, contri_data) {
 		card.addField(fieldTitle, count, true)
 	}
 	if(user.email) {
-		card.addField('email', user.email, false);
+		card.addField('Email', user.email, false);
 	}
 	return card;
 }
