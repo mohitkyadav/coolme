@@ -28,9 +28,9 @@ glitch / zeit / heroku.
 |*!ght*| __**Top trending on GitHub**__|✔|
 |*!mat*| __**Top trending on Masteranime**__|✔|
 |*!ip `<url>`*| __**ip address of the url**__| ✔ |
+|*!gcard `github_username`*| __**Embeded GitHub Card**__| ✔ |
 |*!encrypt `text` `key`*| __**Encrypted text**__| ⏰ |
 |*!decrypt `text` `key`*| __**Decrypted text**__| ⏰ |
-|*!card `gh_profile_url`*| __**Embeded GitHub Card**__| ⏰ |
 
 
 >!cool wolverine
@@ -46,3 +46,11 @@ glitch / zeit / heroku.
 |Emoji|🔱⚽👢✔🎗🌱🎐🎵🎗|
 |Symbolic|w͓̽o͓̽l͓̽v͓̽e͓̽r͓̽i͓̽n͓̽e͓̽|
 |Upsidedown|ʍoʃʌǝɹᴉnǝ|
+
+> !gcard mohitkyadav
+
+![mohitkyadav GitHub card](./demo/mky_card.jpg)
+
+> !gcard google
+
+![google GitHub card](./demo/g_card.jpg)
