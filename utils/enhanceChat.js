@@ -100,7 +100,8 @@ enhanceChat.embedHelp = function() {
 		.addField('🎌 Trending on MASTERANIME', '`!mat`', false)
 		.addField('🐤 Trending on Twitter', '`!twt`', false)
 		.addField('🐱‍ Trending on GitHub', '`!ght`', false)
-		.addField('📺 Trending on YouTube', '`!ytt`', false);
+		.addField('📺 Trending on YouTube', '`!ytt`', false)
+		.addField('🎴 Get a GitHub Card', '`!gcard username`', false);
 
 	return embed;
 }
@@ -135,6 +136,42 @@ enhanceChat.embedTrendingRepos = function (repos) {
 		);
 	}
 	return trendingRepos;
+}
+
+enhanceChat.embedCard = function (user) {
+	let d = new Date(user.created_at);
+	let card = new RichEmbed()
+		.setTitle(user.login)
+		.setURL(user.html_url)
+		.setColor('#e50914')
+		.setThumbnail(user.avatar_url)
+		.setFooter(`On GitHub since ${d.getDate()}-${d.getMonth()}-${d.getFullYear()}`);
+
+	if(user.name) {
+		let fieldTitle = 'Name';
+		user.type == 'Organization' ? fieldTitle = 'Organization Name' : fieldTitle = 'Name';
+		card.addField(fieldTitle, user.name, true)
+	}
+	if(user.bio) {
+		card.addField('Bio', user.bio, true);
+	}
+	if(user.company) {
+		card.addField('Organizations', user.company, false);
+	}
+	card.addField('Public Repos', user.public_repos, true);
+	card.addField('Public Gists', user.public_gists, true);
+	card.addField('Followers', user.followers, true);
+	card.addField('Following', user.following, true);
+	if(user.location) {
+		card.addField('Location', user.location, false);
+	}
+	if(user.blog) {
+		card.addField('Site', user.blog, false);
+	}
+	if(user.email) {
+		card.addField('email', user.email, false);
+	}
+	return card;
 }
 
 enhanceChat.embedTrendingVideos = function (items) {

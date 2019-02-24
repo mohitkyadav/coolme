@@ -18,4 +18,10 @@ ghHelper.trending = async function(message) {
 	});
 }
 
+ghHelper.getUserCard = async function(username, message) {
+	await axios.get(`https://api.github.com/users/${username}`).then(response => {
+		message.channel.send(enhanceChat.embedCard(response.data));
+	}).catch(err => console.log(err));
+}
+
 module.exports = ghHelper;

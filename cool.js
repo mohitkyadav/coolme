@@ -205,6 +205,14 @@ client.on('message', message => {
 		twHelper.trending(message);
 	} else if (message.content.startsWith('!ght') || message.content.startsWith('!trending on gh')) {
 		ghHelper.trending(message);
+	} else if (message.content.startsWith('!gcard')) {
+		const args = (message.content.split('!gcard').pop()).trim();
+		if(args.length >= 1) {
+			ghHelper.getUserCard(args, message);
+		} else {
+			message.reply('Expected username after !gcard. i.e   **!gcard mohitkyadav**');
+			ghHelper.getUserCard('mohitkyadav', message);
+		}
 	} else if (message.content.startsWith('!ytt')) {
 		const args = (message.content.split(' '));
 		ytHelper.trending(message, YTKEY, args[1]);
