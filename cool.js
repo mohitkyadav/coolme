@@ -4,7 +4,8 @@ const dns = require('dns');
 
 require('dotenv').config();
 
-const maService = require('./utils/maService');
+// ☠😢 ma is dead
+// const maService = require('./utils/maService');
 const twHelper = require('./utils/twService');
 const ghHelper = require('./utils/ghService');
 const ytHelper = require('./utils/ytService');
@@ -38,7 +39,7 @@ client.on('message', message => {
 
 	} else if (message.content === '!hello') {
 
-		message.channel.send(enhanceChat.embedStatic('world! ha ha gotcha 😎'));
+		message.channel.send(enhanceChat.embedStatic('world! 😎'));
 
 	} else if (message.content === '!yo') {
 
@@ -47,6 +48,7 @@ client.on('message', message => {
 	} else if (
 		message.content === 'what is my avatar' ||
 		message.content === 'what\'s my avatar' ||
+		message.content === 'my avatar' ||
 		message.content === 'how do i look') {
     message.reply(enhanceChat.embedStatic('Your avatar ', 'Great! 👌 ', '#00b8d4', message.author.avatarURL));
 
@@ -194,13 +196,6 @@ client.on('message', message => {
       ));
 		}
 
-	} else if (message.content.startsWith('!mat')) {
-		message.channel.send(enhanceChat.embedStatic(
-			'Fetching today\'s trending from masterani.me',
-			'Please wait upto 5 seconds',
-			'#ffff04'
-		));
-		maHelper.trending(message);
 	} else if (message.content.startsWith('!twt')) {
 		twHelper.trending(message);
 	} else if (message.content.startsWith('!ght') || message.content.startsWith('!trending on gh')) {
