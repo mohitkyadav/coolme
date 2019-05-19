@@ -26,7 +26,6 @@ glitch / zeit / heroku.
 |*!ytt*| __**Top trending on YouTube**__|✔|
 |*!twt*| __**Top trending on Twitter**__|✔|
 |*!ght*| __**Top trending on GitHub**__|✔|
-|*!mat*| __**Top trending on Masteranime**__|✔|
 |*!ip `<url>`*| __**ip address of the url**__| ✔ |
 |*!gcard `github_username`*| __**Embeded GitHub Card**__| ✔ |
 |*!encrypt `text` `key`*| __**Encrypted text**__| ⏰ |
