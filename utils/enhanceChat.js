@@ -155,8 +155,6 @@ enhanceChat.embedCard = (user, contributions) => {
 		orgs.forEach(ele => {
 			companyString += `[${ele}](https://github.com/${ele.substring(1)}) `;
 		});
-		console.log(companyString);
-
 		card.addField("Organizations", companyString, false);
 	}
 	card.addField("Public Repos", user.public_repos, true);
@@ -167,7 +165,13 @@ enhanceChat.embedCard = (user, contributions) => {
 		card.addField("Location", user.location, false);
 	}
 	if (user.blog) {
-		card.addField("Site", user.blog, false);
+		const reg = /^((http|https):\/\/)/;
+		let url = user.blog;
+		if (!reg.test(user.blog)) {
+			url = "https://" + user.blog;
+		}
+		const site = `[${user.blog}](${url})`;
+		card.addField("Site", site, false);
 	}
 	if (user.type === "User") {
 		const fieldTitle = "Contributions Today";
