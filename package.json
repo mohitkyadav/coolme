@@ -22,7 +22,7 @@
     "mocha": "^5.2.0"
   },
   "engines": {
-    "node": "9.x"
+    "node": "12.x"
   },
   "license": "MIT",
   "keywords": [

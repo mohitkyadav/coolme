@@ -1,92 +1,80 @@
-const { Client, RichEmbed } = require('discord.js');
+const { Client, RichEmbed } = require("discord.js");
 
 enhanceChat = {};
 
-enhanceChat.jsonToTable = function (json) {
-
-  let msg = '';
-  for (var key in json) {
-    if (json.hasOwnProperty(key)) {
-      // TODO: That's a jugad 😉,
-      // TODO: find out why there's '/' in response
-      msg += '**' + json[key].slice(0, -1) + '**\n\n';
-    }
-  }
-  return msg;
-}
-
-enhanceChat.jsonToList = function (json) {
-	let list = '';
-	json.forEach(element => {
-		list += element;
-		list += '\n';
+enhanceChat.jsonToTable = json => {
+	let msg = "";
+	Object.values(json).forEach(val => {
+		msg += `**${val.slice(0, -1)}**\n\n`;
 	});
-	return list;
-}
+	return msg;
+};
 
-enhanceChat.embedStatic = function (
-  msg='Something\'s not alright. :/',
-  title='',
-  color='#7c4dff',
-  image = '',
-  url='') {
-  const embed = new RichEmbed()
-    .setTitle(title)
-    .setColor(color)
-    .setDescription(msg)
-    .setURL(url)
-    .setImage(image);
-  return embed;
-}
+enhanceChat.jsonToList = json => json.join("\n");
 
-enhanceChat.embedWeather = function (data) {
+enhanceChat.embedStatic = function(
+	msg = "Something's not alright. :/",
+	title = "",
+	color = "#7c4dff",
+	image = "",
+	url = ""
+) {
+	const embed = new RichEmbed()
+		.setTitle(title)
+		.setColor(color)
+		.setDescription(msg)
+		.setURL(url)
+		.setImage(image);
+	return embed;
+};
 
-	const cityName = data['name'];
-	const thumbnail = data['weather'][0]['icon'];
+enhanceChat.embedWeather = function(data) {
+	const cityName = data["name"];
+	const thumbnail = data["weather"][0]["icon"];
 	const fields = [
 		{
-			'name': 'Temperature',
-			'value' : data['main']['temp'] + '° C',
-			'inline': true
+			name: "Temperature",
+			value: data["main"]["temp"] + "° C",
+			inline: true
 		},
 		{
-			'name': 'Conditions',
-			'value': data['weather'][0]['main'],
-			'inline': true
+			name: "Conditions",
+			value: data["weather"][0]["main"],
+			inline: true
 		},
 		{
-			'name': 'Humidity',
-			'value': data['main']['humidity'] + '%',
-			'inline': true
+			name: "Humidity",
+			value: data["main"]["humidity"] + "%",
+			inline: true
 		},
 		{
-			'name': 'Pressure',
-			'value': data['main']['pressure'] + ' mb',
-			'inline': true
+			name: "Pressure",
+			value: data["main"]["pressure"] + " mb",
+			inline: true
 		},
 		{
-			'name': 'Longitude',
-			'value': data['coord']['lon'] + '° N',
-			'inline': true
+			name: "Longitude",
+			value: data["coord"]["lon"] + "° N",
+			inline: true
 		},
 		{
-			'name': 'Latitude ',
-			'value': data['coord']['lat'] + '° E',
-			'inline': true
+			name: "Latitude ",
+			value: data["coord"]["lat"] + "° E",
+			inline: true
 		}
-	]
-	const color = '#00ec3c';
+	];
+	const color = "#00ec3c";
 
-  let embed = new RichEmbed()
-    .setTitle(`Weather in ${cityName}`)
-    .setColor(color)
+	let embed = new RichEmbed()
+		.setTitle(`Weather in ${cityName}`)
+		.setColor(color)
 		.setThumbnail(`http://openweathermap.org/img/w/${thumbnail}.png`);
 
 	for (let i = 0; i < fields.length; i++) {
-		embed.addField(fields[i]['name'], fields[i]['value'], fields[i]['inline']);
+		embed.addField(fields[i]["name"], fields[i]["value"], fields[i]["inline"]);
 	}
-  return embed;
-}
+	return embed;
+};
 
 enhanceChat.embedHelp = function() {
 	let embed = new RichEmbed()
@@ -94,38 +82,43 @@ enhanceChat.embedHelp = function() {
 		.setColor(`#ffff00`)
 		.setURL(`https://git.io/fpFgn`)
 		.setFooter(`For more commands click go to https://git.io/fpFgn`)
-		.addField('😎 Coolify text and nickames', '`!cool string`', false)
-		.addField('😶 Uncoolify cool text', '`!uncool string`', false)
-		.addField('☁ Weather', '`!weather city`', false)
-		.addField('🐤 Trending on Twitter', '`!twt`', false)
-		.addField('🐱‍ Trending on GitHub', '`!ght`', false)
-		.addField('📺 Trending on YouTube', '`!ytt`', false)
-		.addField('🎴 Get a GitHub Card', '`!gcard username`', false);
+		.addField("😎 Coolify text and nickames", "`!cool string`", false)
+		.addField("😶 Uncoolify cool text", "`!uncool string`", false)
+		.addField("☁ Weather", "`!weather city`", false)
+		.addField("🐤 Trending on Twitter", "`!twt`", false)
+		.addField("🐱‍ Trending on GitHub", "`!ght`", false)
+		.addField("📺 Trending on YouTube", "`!ytt`", false)
+		.addField("🎴 Get a GitHub Card", "`!gcard username`", false);
 
 	return embed;
-}
+};
 
-enhanceChat.embedTrendingAnime = function(popular_today) {
+enhanceChat.embedTrendingAnime = popular_today => {
 	let trendingAnime = [];
 	for (let i = 0; i < 5; i++) {
 		let embed = new RichEmbed()
 			.setTitle(`${popular_today[i].title}`)
 			.setDescription(`Views - **${popular_today[i].total}**`)
-			.setColor('#e50914')
-			.setThumbnail(`https://cdn.masterani.me/poster/1/${popular_today[i].poster}`)
-			.addField('Watch it now on', `[MASTERANIME](https://www.masterani.me/anime/info/${popular_today[i].slug})`);
-			trendingAnime.push(embed);
+			.setColor("#e50914")
+			.setThumbnail(
+				`https://cdn.masterani.me/poster/1/${popular_today[i].poster}`
+			)
+			.addField(
+				"Watch it now on",
+				`[MASTERANIME](https://www.masterani.me/anime/info/${popular_today[i].slug})`
+			);
+		trendingAnime.push(embed);
 	}
 	return trendingAnime;
-}
+};
 
-enhanceChat.embedTrendingRepos = function (repos) {
+enhanceChat.embedTrendingRepos = repos => {
 	let trendingRepos = new RichEmbed()
-		.setTitle('⚡ Trending on GitHub')
-		.setDescription('Showing the top 10 trending repositories on GitHub')
-		.setURL('https://github.com/trending/')
-		.setColor('#80ff00')
-		.setThumbnail('https://logo.clearbit.com/githubuniverse.com');
+		.setTitle("⚡ Trending on GitHub")
+		.setDescription("Showing the top 10 trending repositories on GitHub")
+		.setURL("https://github.com/trending/")
+		.setColor("#80ff00")
+		.setThumbnail("https://logo.clearbit.com/githubuniverse.com");
 
 	for (let i = 0; i < Math.min(10, repos.length); i++) {
 		trendingRepos.addField(
@@ -135,70 +128,86 @@ enhanceChat.embedTrendingRepos = function (repos) {
 		);
 	}
 	return trendingRepos;
-}
+};
 
-enhanceChat.embedCard = function (user) {
+enhanceChat.embedCard = (user, contributions) => {
 	let d = new Date(user.created_at);
 	let card = new RichEmbed()
 		.setTitle(user.login)
 		.setURL(user.html_url)
-		.setColor('#e50914')
+		.setColor("#e50914")
 		.setThumbnail(user.avatar_url)
-		.setFooter(`On GitHub since ${d.getDate()}-${d.getMonth()}-${d.getFullYear()}`);
+		.setFooter(
+			`On GitHub since ${d.getDate()}-${d.getMonth()}-${d.getFullYear()}`
+		);
 
-	if(user.name) {
-		let fieldTitle = 'Name';
-		user.type == 'Organization' ? fieldTitle = 'Organization Name' : fieldTitle = 'Name';
-		card.addField(fieldTitle, user.name, true)
+	if (user.name) {
+		let fieldTitle = user.type === "Organization" ? "Organization " : "";
+		fieldTitle += "Name";
+		card.addField(fieldTitle, user.name, true);
 	}
-	if(user.bio) {
-		card.addField('Bio', user.bio, true);
+	if (user.bio) {
+		card.addField("Bio", user.bio, true);
 	}
-	if(user.company) {
-		let orgs = (user.company.split(' '));
-		// orgs.forEach(elem => {
-		// 	elem = elem.substr(1);
-		// 	console.log(elem);
-		// });
-		// console.log(orgs);
+	if (user.company) {
+		const orgs = user.company.trim().split(" ");
+		let companyString = "";
+		orgs.forEach(ele => {
+			companyString += `[${ele}](https://github.com/${ele.substring(1)}) `;
+		});
+		console.log(companyString);
 
-		card.addField('Organizations', user.company, false);
+		card.addField("Organizations", companyString, false);
 	}
-	card.addField('Public Repos', user.public_repos, true);
-	card.addField('Public Gists', user.public_gists, true);
-	card.addField('Followers', user.followers, true);
-	card.addField('Following', user.following, true);
-	if(user.location) {
-		card.addField('Location', user.location, false);
+	card.addField("Public Repos", user.public_repos, true);
+	card.addField("Public Gists", user.public_gists, true);
+	card.addField("Followers", user.followers, true);
+	card.addField("Following", user.following, true);
+	if (user.location) {
+		card.addField("Location", user.location, false);
 	}
-	if(user.blog) {
-		card.addField('Site', user.blog, false);
+	if (user.blog) {
+		card.addField("Site", user.blog, false);
 	}
-	if(user.email) {
-		card.addField('email', user.email, false);
+	if (user.type === "User") {
+		const fieldTitle = "Contributions Today";
+		const today = new Date();
+		const date = today.getDate();
+		const m = today.getMonth() + 1;
+		const y = today.getFullYear();
+		const contributionData = contributions["data"][y][m][date];
+		const count = contributionData
+			? contributionData
+			: "Not available for today";
+		card.addField(fieldTitle, count, true);
+	}
+	if (user.email) {
+		card.addField("Email", user.email, false);
 	}
 	return card;
-}
+};
 
-enhanceChat.embedTrendingVideos = function (items) {
-
+enhanceChat.embedTrendingVideos = items => {
 	let trendingVideos = [];
 	for (let i = 0; i < 5; i++) {
 		trendingVideos.push(`https://www.youtube.com/watch?v=${items[i].id}`);
 	}
 
 	return trendingVideos;
-}
+};
 
-enhanceChat.embedTrendingTags = function (data) {
+enhanceChat.embedTrendingTags = function(data) {
 	let embeddedMessage = new RichEmbed()
 		.setTitle(`⚡ Trending ${data.locations[0].name}`)
 		.setThumbnail(`https://logo.clearbit.com/twitter.com`)
-		.setColor('#1da1f2');
+		.setColor("#1da1f2");
 
-	let fieldsCount = 0
+	let fieldsCount = 0;
 	while (embeddedMessage.fields.length < 10) {
-		if (data.trends[fieldsCount].promoted_content || !data.trends[fieldsCount].tweet_volume) {
+		if (
+			data.trends[fieldsCount].promoted_content ||
+			!data.trends[fieldsCount].tweet_volume
+		) {
 			fieldsCount++;
 			continue;
 		} else {
@@ -211,6 +220,6 @@ enhanceChat.embedTrendingTags = function (data) {
 		}
 	}
 	return embeddedMessage;
-}
+};
 
 module.exports = enhanceChat;
