@@ -233,7 +233,7 @@ client.on('message', message => {
     } else {
       message.reply(
         enhanceChat.embedStatic(
-          'Also enter location i.e **!weather delhi**',
+          'Also enter location i.e **!weather Delhi**',
           'Error',
           '#FF6347',
           '',
