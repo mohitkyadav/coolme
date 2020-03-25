@@ -12,7 +12,7 @@ enhanceChat.jsonToTable = json => {
 
 enhanceChat.jsonToList = json => json.join('\n');
 
-enhanceChat.embedStatic = function(
+enhanceChat.embedStatic = function (
   msg = "Something's not alright. :/",
   title = '',
   color = '#7c4dff',
@@ -28,7 +28,7 @@ enhanceChat.embedStatic = function(
   return embed;
 };
 
-enhanceChat.embedWeather = function(data) {
+enhanceChat.embedWeather = function (data) {
   const cityName = data['name'];
   const thumbnail = data['weather'][0]['icon'];
   const fields = [
@@ -76,7 +76,7 @@ enhanceChat.embedWeather = function(data) {
   return embed;
 };
 
-enhanceChat.embedHelp = function() {
+enhanceChat.embedHelp = function () {
   let embed = new RichEmbed()
     .setTitle(`Coolme bot - Commands list`)
     .setColor(`#ffff00`)
@@ -200,7 +200,7 @@ enhanceChat.embedTrendingVideos = items => {
   return trendingVideos;
 };
 
-enhanceChat.embedTrendingTags = function(data) {
+enhanceChat.embedTrendingTags = function (data) {
   let embeddedMessage = new RichEmbed()
     .setTitle(`⚡ Trending ${data.locations[0].name}`)
     .setThumbnail(`https://logo.clearbit.com/twitter.com`)

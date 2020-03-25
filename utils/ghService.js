@@ -30,6 +30,7 @@ ghHelper.getUserCard = async (username, message) => {
       .then(res => res.data)
       .catch(err => console.error(err));
   }
+
   message.channel.send(enhanceChat.embedCard(ghUser, contributions));
 };
 
