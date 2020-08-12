@@ -85,6 +85,7 @@ enhanceChat.embedHelp = function () {
     .addField('😎 Coolify text and nickames', '`!cool string`', false)
     .addField('😶 Uncoolify cool text', '`!uncool string`', false)
     .addField('☁ Weather', '`!weather city`', false)
+    .addField('🧲 Latest anime episode ', '`!magnet animeID`', false)
     .addField('🐤 Trending on Twitter', '`!twt`', false)
     .addField('🐱‍ Trending on GitHub', '`!ght`', false)
     .addField('📺 Trending on YouTube', '`!ytt`', false)
