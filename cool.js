@@ -8,6 +8,7 @@ require('dotenv').config();
 // const maService = require('./utils/maService');
 const twHelper = require('./utils/twService');
 const ghHelper = require('./utils/ghService');
+const horribleHelper = require('./utils/horribleHelper');
 const ytHelper = require('./utils/ytService');
 const enhanceChat = require('./utils/enhanceChat');
 
@@ -239,6 +240,18 @@ client.on('message', message => {
           '',
           'https://git.io/fpFgn'
         )
+      );
+    }
+  } else if (message.content.startsWith('!magnet')) {
+    const args = message.content
+      .split('!magnet')
+      .pop()
+      .trim();
+    if (args.length >= 1) {
+      horribleHelper.magnet(args, message);
+    } else {
+      message.reply(
+        'Expected anime id after !magnet. i.e   **!magnet 959**'
       );
     }
   } else if (message.content.startsWith('!twt')) {

@@ -226,4 +226,18 @@ enhanceChat.embedTrendingTags = function (data) {
   return embeddedMessage;
 };
 
+enhanceChat.embedMagnets = function (data) {
+  let embeddedMessage = new RichEmbed()
+    .setTitle(`Enjoy episode ${data.episode} of ${data.animeName}`)
+    .setThumbnail(`https://github.com/aashutoshrathi.png`)
+    .setFooter(`Aired ${data.date}`)
+    .setColor('#E53232');
+
+  embeddedMessage.addField('SD', `${data.SD}`, false);
+  embeddedMessage.addField('HD', `${data.HD}`, false);
+  embeddedMessage.addField('UHD', `${data.UHD}`, false);
+
+  return embeddedMessage;
+};
+
 module.exports = enhanceChat;
