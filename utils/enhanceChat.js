@@ -229,7 +229,7 @@ enhanceChat.embedTrendingTags = function (data) {
   return embeddedMessage;
 };
 
-enhanceChat.embedMagnets = function (data) {
+enhanceChat.embedMagnets = (data) => {
   const qualities = { SD: '📱', HD: '📺', UHD: '💻' }
   const description = Object.keys(qualities)
                       .map(quality => `[${quality} ${qualities[quality]}](${MAGNET_URI}/${data[quality]})`).join(' 🖇 ');

@@ -60,7 +60,7 @@ client.on('message', message => {
       .split('!cool')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       axios
         .get(`https://cool-name-api.glitch.me/coolify?name=${args}/`)
         .then(response => {
@@ -84,7 +84,7 @@ client.on('message', message => {
       .split('!uncool')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       axios
         .get(`https://cool-name-api.glitch.me/uncoolify?name=${args}/`)
         .then(response => {
@@ -166,7 +166,7 @@ client.on('message', message => {
       args = args.substring(0, args.length - 1);
     }
 
-    if (args.length >= 1) {
+    if (args.length) {
       dns.resolve4(args, function(err, addresses) {
         if (err) {
           message.reply(
@@ -203,7 +203,7 @@ client.on('message', message => {
       .split('!weather')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       axios
         .get(
           `http://api.openweathermap.org/data/2.5/weather?q=${args}&APPID=${OWKEY}&units=metric`
@@ -247,7 +247,7 @@ client.on('message', message => {
       .split('!magnet')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       horribleHelper.magnet(args, message);
     } else {
       message.reply(
@@ -266,7 +266,7 @@ client.on('message', message => {
       .split('!gcard')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       ghHelper.getUserCard(args, message);
     } else {
       message.reply(
