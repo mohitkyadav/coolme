@@ -8,6 +8,7 @@
   "homepage": "https://github.com/mohitkyadav",
   "scripts": {
     "start": "node cool.js",
+    "start:dev": "nodemon cool.js",
     "test": "mocha"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "cloudscraper": "^2.0.0",
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
+    "nodemon": "^2.0.4",
     "twit": "^2.2.11"
   },
   "devDependencies": {

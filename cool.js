@@ -8,6 +8,7 @@ require('dotenv').config();
 // const maService = require('./utils/maService');
 const twHelper = require('./utils/twService');
 const ghHelper = require('./utils/ghService');
+const horribleHelper = require('./utils/horribleHelper');
 const ytHelper = require('./utils/ytService');
 const enhanceChat = require('./utils/enhanceChat');
 
@@ -59,7 +60,7 @@ client.on('message', message => {
       .split('!cool')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       axios
         .get(`https://cool-name-api.glitch.me/coolify?name=${args}/`)
         .then(response => {
@@ -83,7 +84,7 @@ client.on('message', message => {
       .split('!uncool')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       axios
         .get(`https://cool-name-api.glitch.me/uncoolify?name=${args}/`)
         .then(response => {
@@ -165,7 +166,7 @@ client.on('message', message => {
       args = args.substring(0, args.length - 1);
     }
 
-    if (args.length >= 1) {
+    if (args.length) {
       dns.resolve4(args, function(err, addresses) {
         if (err) {
           message.reply(
@@ -202,7 +203,7 @@ client.on('message', message => {
       .split('!weather')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       axios
         .get(
           `http://api.openweathermap.org/data/2.5/weather?q=${args}&APPID=${OWKEY}&units=metric`
@@ -241,6 +242,18 @@ client.on('message', message => {
         )
       );
     }
+  } else if (message.content.startsWith('!magnet')) {
+    const args = message.content
+      .split('!magnet')
+      .pop()
+      .trim();
+    if (args.length) {
+      horribleHelper.magnet(args, message);
+    } else {
+      message.reply(
+        'Expected anime id after !magnet. i.e   **!magnet 959**'
+      );
+    }
   } else if (message.content.startsWith('!twt')) {
     twHelper.trending(message);
   } else if (
@@ -253,7 +266,7 @@ client.on('message', message => {
       .split('!gcard')
       .pop()
       .trim();
-    if (args.length >= 1) {
+    if (args.length) {
       ghHelper.getUserCard(args, message);
     } else {
       message.reply(

@@ -1,4 +1,6 @@
-const { Client, RichEmbed } = require('discord.js');
+const { RichEmbed } = require('discord.js');
+require('dotenv').config();
+const { MAGNET_URI, MAG_GIF } = process.env
 
 enhanceChat = {};
 
@@ -85,6 +87,7 @@ enhanceChat.embedHelp = function () {
     .addField('😎 Coolify text and nickames', '`!cool string`', false)
     .addField('😶 Uncoolify cool text', '`!uncool string`', false)
     .addField('☁ Weather', '`!weather city`', false)
+    .addField('🧲 Latest anime episode ', '`!magnet animeID`', false)
     .addField('🐤 Trending on Twitter', '`!twt`', false)
     .addField('🐱‍ Trending on GitHub', '`!ght`', false)
     .addField('📺 Trending on YouTube', '`!ytt`', false)
@@ -223,6 +226,19 @@ enhanceChat.embedTrendingTags = function (data) {
       fieldsCount++;
     }
   }
+  return embeddedMessage;
+};
+
+enhanceChat.embedMagnets = (data) => {
+  const qualities = { SD: '📱', HD: '📺', UHD: '💻' }
+  const description = Object.keys(qualities)
+                      .map(quality => `[${quality} ${qualities[quality]}](${MAGNET_URI}/${data[quality]})`).join(' 🖇 ');
+  const embeddedMessage = new RichEmbed()
+    .setTitle(`${data.animeName} | Episode ${data.episode} 📺`)
+    .setThumbnail(MAG_GIF)
+    .setDescription(description)
+    .setFooter(`⌚ Aired ${data.date}`)
+    .setColor('#E53232');
   return embeddedMessage;
 };
 
