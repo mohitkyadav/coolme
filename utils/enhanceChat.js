@@ -1,4 +1,6 @@
-const { Client, RichEmbed } = require('discord.js');
+const { RichEmbed } = require('discord.js');
+require('dotenv').config();
+const { MAGNET_URI, MAG_GIF } = process.env
 
 enhanceChat = {};
 
@@ -228,16 +230,15 @@ enhanceChat.embedTrendingTags = function (data) {
 };
 
 enhanceChat.embedMagnets = function (data) {
-  let embeddedMessage = new RichEmbed()
-    .setTitle(`Enjoy episode ${data.episode} of ${data.animeName}`)
-    .setThumbnail(`https://github.com/aashutoshrathi.png`)
-    .setFooter(`Aired ${data.date}`)
+  const qualities = { SD: '📱', HD: '📺', UHD: '💻' }
+  const description = Object.keys(qualities)
+                      .map(quality => `[${quality} ${qualities[quality]}](${MAGNET_URI}/${data[quality]})`).join(' 🖇 ');
+  const embeddedMessage = new RichEmbed()
+    .setTitle(`${data.animeName} | Episode ${data.episode} 📺`)
+    .setThumbnail(MAG_GIF)
+    .setDescription(description)
+    .setFooter(`⌚ Aired ${data.date}`)
     .setColor('#E53232');
-
-  embeddedMessage.addField('SD', `${data.SD}`, false);
-  embeddedMessage.addField('HD', `${data.HD}`, false);
-  embeddedMessage.addField('UHD', `${data.UHD}`, false);
-
   return embeddedMessage;
 };
 

@@ -5,11 +5,11 @@ const enhanceChat = require('./enhanceChat');
 
 const horribleHelper = {};
 
-const API_HOST = process.env.RATHI_API_HOST
+const { HORRIBLE_URI } = process.env
 
 horribleHelper.magnet = async function(args, message) {
   await axios
-    .get(`${API_HOST}/horrible/${959}`)
+    .get(`${HORRIBLE_URI}/${args}`)
     .then(res => {
       message.channel.send(enhanceChat.embedMagnets(res.data));
     })
