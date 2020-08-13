@@ -284,7 +284,7 @@ client.on('message', message => {
 require('http')
   .createServer((_request, response) => {
     response.writeHead(200, { 'Content-Type': 'text/html' });
-    response.write('Lost?');
+    response.write('kaha?');
     response.end();
   })
   .listen(3000);

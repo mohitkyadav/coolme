@@ -1,1 +1,1 @@
-worker: node cool.js
+web: node cool.js
