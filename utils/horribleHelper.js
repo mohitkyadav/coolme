@@ -17,11 +17,14 @@ horribleHelper.magnet = function(args, message) {
     )
     return
   }
-  const episode = argsArray[1] && argsArray[1].trim()
-  const url = parseInt(episode, 10) > 0 ? `${HORRIBLE_URI}/?anime=${anime}&ep=${episode}` : `${HORRIBLE_URI}/?anime=${anime}`
+  const ep = argsArray[1] && argsArray[1].trim()
+  const params = {
+    anime,
+    ...(parseInt(ep, 10) > 0 && { ep })
+  }
 
   axios
-    .get(url)
+    .get(HORRIBLE_URI, { params })
     .then(res => {
       message.channel.send(enhanceChat.embedMagnets(res.data));
     })
