@@ -13,7 +13,7 @@ horribleHelper.magnet = function(args, message) {
 
   if (!anime) {
     message.channel.send(
-      enhanceChat.embedStatic('Try **!magnet naruto** or **magnet 323**', 'Missing anime name or id', '#bf0000')
+      enhanceChat.embedStatic('Try **!magnet naruto** or **magnet 323**', 'Missing anime name', '#bf0000')
     )
     return
   }
