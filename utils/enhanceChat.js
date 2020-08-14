@@ -88,6 +88,7 @@ enhanceChat.embedHelp = function () {
     .addField('😶 Uncoolify cool text', '`!uncool string`', false)
     .addField('☁ Weather', '`!weather city`', false)
     .addField('🧲 Latest anime episode ', '`!magnet animeID`', false)
+    .addField('🧲 Custom anime episode ', '`!magnet animeID episodeNumber`', false)
     .addField('🐤 Trending on Twitter', '`!twt`', false)
     .addField('🐱‍ Trending on GitHub', '`!ght`', false)
     .addField('📺 Trending on YouTube', '`!ytt`', false)
@@ -230,6 +231,10 @@ enhanceChat.embedTrendingTags = function (data) {
 };
 
 enhanceChat.embedMagnets = (data) => {
+  if (data.error) {
+    return enhanceChat.embedStatic(data.error, 'Error attracting magnets', '#E53232');
+  }
+
   const qualities = { SD: '📱', HD: '📺', UHD: '💻' }
   const description = Object.keys(qualities)
                       .map(quality => `[${quality} ${qualities[quality]}](${MAGNET_URI}/${data[quality]})`).join(' 🖇 ');
