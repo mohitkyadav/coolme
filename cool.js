@@ -251,7 +251,7 @@ client.on('message', message => {
       horribleHelper.magnet(args, message);
     } else {
       message.reply(
-        'Expected anime id after !magnet. i.e   **!magnet 959**'
+        'use command `!help` to see the usage.'
       );
     }
   } else if (message.content.startsWith('!twt')) {
