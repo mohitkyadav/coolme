@@ -21,7 +21,8 @@
   },
   "devDependencies": {
     "eslint": "^5.10.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "moment": "^2.27.0"
   },
   "engines": {
     "node": "12.x"

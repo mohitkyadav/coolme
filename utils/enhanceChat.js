@@ -1,5 +1,7 @@
-const { RichEmbed } = require('discord.js');
 require('dotenv').config();
+const Moment = require('moment');
+
+const { RichEmbed } = require('discord.js');
 const { MAGNET_URI, MAG_GIF } = process.env
 
 enhanceChat = {};
@@ -266,11 +268,13 @@ enhanceChat.embedMagnets = (data) => {
   const qualities = { SD: '📱', HD: '📺', UHD: '💻' }
   const description = Object.keys(qualities)
                       .map(quality => `[${quality} ${qualities[quality]}](${MAGNET_URI}/${data[quality]})`).join(' 🖇 ');
+
+  const date = new Moment(data.date, 'MM/DD/YYY').format('DD MMM YYYY')
   const embeddedMessage = new RichEmbed()
     .setTitle(`${data.animeName} | Episode ${data.episode} 📺`)
     .setThumbnail(data.poster || MAG_GIF)
     .setDescription(description)
-    .setFooter(`⌚ Aired ${data.date}`)
+    .setFooter(`⌚ Aired ${date === 'Invalid date' ? data.date : date}`)
     .setColor('#43B581');
   return embeddedMessage;
 };
