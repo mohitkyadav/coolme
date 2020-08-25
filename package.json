@@ -17,12 +17,12 @@
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
     "nodemon": "^2.0.4",
-    "twit": "^2.2.11"
+    "twit": "^2.2.11",
+    "moment": "^2.27.0"
   },
   "devDependencies": {
     "eslint": "^5.10.0",
     "mocha": "^5.2.0",
-    "moment": "^2.27.0"
   },
   "engines": {
     "node": "12.x"
