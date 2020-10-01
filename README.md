@@ -54,3 +54,16 @@ glitch / zeit / heroku.
 
 <img src="./demo/g_card.jpg" alt="g" width="400"/>
 
+## Environment variables
+You need to set these variables in your deployment environment. A `sample.env` file has been provided for reference. You can set the values there and rename it to .env for local development.
+| env variable | value |
+|--|--|
+|`TOKEN`|Discord client token|
+|`OWKEY`|Open weather map API key|
+|`YTKEY`|Youtube API key|
+|`PORT`|Set automatically by your deployment platform|
+|`MAG_GIF`|Rich embed default thumbnail url|
+|`TWAPIKEY`|Twitter consumer key|
+|`TWAPISECRET`|Twitter consumer secret|
+|`TWACCESS`|Twitter access token|
+|`TWACCESSSECRET`|Twitter access token secret|
