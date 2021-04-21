@@ -20,18 +20,10 @@ ghHelper.trending = async function(message) {
 };
 
 ghHelper.getUserCard = async (username, message) => {
-  let contributions;
-  const ghUser = await axios
-    .get(`https://api.github.com/users/${username}`)
-    .then(res => res.data);
-  if (ghUser.type === 'User') {
-    contributions = await axios
-      .get(`https://github-contributions-api.herokuapp.com/${username}/count`)
-      .then(res => res.data)
-      .catch(err => console.error(err));
-  }
-
-  message.channel.send(enhanceChat.embedCard(ghUser, contributions));
+  axios
+  .get(`https://api.github.com/users/${username}`).then((ghUser) => {
+      message.channel.send(enhanceChat.embedCard(ghUser.data));
+    });
 };
 
 module.exports = ghHelper;

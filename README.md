@@ -3,48 +3,31 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/mohitkyadav/coolme/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/mohitkyadav/coolme)
 [![Support](https://discordapp.com/api/guilds/522610943037931551/embed.png)](https://discord.gg/bJGQRJx)
-[![Discord Bots](https://discordbots.org/api/widget/status/521530934512713741.svg)](https://discordbots.org/bot/521530934512713741)
-
-[![Support](https://discordbots.org/api/widget/521530934512713741.svg?usernamecolor=FFFFFF&topcolor=000000)](https://discordbots.org/bot/521530934512713741)
-
 
 ## Deployable on
+
 ```
 glitch / zeit / heroku.
 ```
 
 ## List of supported commands
 
-| Command | Response  | Status |
-|---------|-----------|--------|
-|*!hello*  | **world!**| ✔ |
-|*!yo*    | **lo!😜** | ✔ |
-|*!status*| **server status(200/404)**|✔|
-|*!cool `<string>`*  | __**All cool strings**__  | ✔ |
-|*!uncool `<string>`*| __**original string**__ | ✔ |
-|*!weather `<city_name>`*| __**weather information**__ | ✔ |
-|*!ytt*| __**Top trending on YouTube**__|✔|
-|*!twt*| __**Top trending on Twitter**__|✔|
-|*!ght*| __**Top trending on GitHub**__|✔|
-|*!ip `<url>`*| __**ip address of the url**__| ✔ |
-|*!gcard `github_username`*| __**Embeded GitHub Card**__| ✔ |
-|*!encrypt `text` `key`*| __**Encrypted text**__| ⏰ |
-|*!decrypt `text` `key`*| __**Decrypted text**__| ⏰ |
+| Command                    | Response                            | Status |
+| -------------------------- | ----------------------------------- | ------ |
+| _!hello_                   | **world!**                          | ✔      |
+| _!yo_                      | **lo!😜**                           | ✔      |
+| _!status_                  | **server status(200/404)**          | ✔      |
+| _!cool `<string>`_         | \***\*All cool strings\*\***        | ✔      |
+| _!uncool `<string>`_       | \***\*original string\*\***         | ✔      |
+| _!weather `<city_name>`_   | \***\*weather information\*\***     | ✔      |
+| _!ytt_                     | \***\*Top trending on YouTube\*\*** | ✔      |
+| _!twt_                     | \***\*Top trending on Twitter\*\*** | ✔      |
+| _!ip `<url>`_              | \***\*ip address of the url\*\***   | ✔      |
+| _!gcard `github_username`_ | \***\*Embeded GitHub Card\*\***     | ✔      |
+| _!encrypt `text` `key`_    | \***\*Encrypted text\*\***          | ⏰     |
+| _!decrypt `text` `key`_    | \***\*Decrypted text\*\***          | ⏰     |
 
-
->!cool wolverine
-
-|Type|Output|
-|--|--|
-|Alphanum|w01v3r¡n3|
-|Circle|ⓦⓞⓛⓥⓔⓡⓘⓝⓔ|
-|Square|🅆🄾🄻🅅🄴🅁🄸🄽🄴|
-|Mixed|ⓦ01v3r¡n3|
-|Mixed 2|wo|ver!ne|
-|Normal|wolverine|
-|Emoji|🔱⚽👢✔🎗🌱🎐🎵🎗|
-|Symbolic|w͓̽o͓̽l͓̽v͓̽e͓̽r͓̽i͓̽n͓̽e͓̽|
-|Upsidedown|ʍoʃʌǝɹᴉnǝ|
+# Examples
 
 > !gcard mohitkyadav
 
@@ -55,6 +38,7 @@ glitch / zeit / heroku.
 <img src="./demo/g_card.jpg" alt="g" width="400"/>
 
 ## Environment variables
+
 You need to set these variables in your deployment environment. A `sample.env` file has been provided for reference. You can set the values there and rename it to .env for local development.
 | env variable | value |
 |--|--|

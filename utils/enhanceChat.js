@@ -90,7 +90,6 @@ enhanceChat.embedHelp = function () {
     .addField('😶 Uncoolify cool text', '`!uncool string`', false)
     .addField('☁ Weather', '`!weather city`', false)
     .addField('🐤 Trending on Twitter', '`!twt`', false)
-    .addField('🐱‍ Trending on GitHub', '`!ght`', false)
     .addField('📺 Trending on YouTube', '`!ytt`', false)
     .addField('🎴 Get a GitHub Card', '`!gcard username`', false);
 
@@ -134,7 +133,7 @@ enhanceChat.embedTrendingRepos = repos => {
   return trendingRepos;
 };
 
-enhanceChat.embedCard = (user, contributions) => {
+enhanceChat.embedCard = (user) => {
   let d = new Date(user.created_at);
   let card = new RichEmbed()
     .setTitle(user.login)
@@ -176,18 +175,6 @@ enhanceChat.embedCard = (user, contributions) => {
     }
     const site = `[${user.blog}](${url})`;
     card.addField('Site', site, false);
-  }
-  if (user.type === 'User') {
-    const fieldTitle = 'Contributions Today';
-    const today = new Date();
-    const date = today.getDate();
-    const m = today.getMonth() + 1;
-    const y = today.getFullYear();
-    const contributionData = contributions['data'][y][m][date];
-    const count = contributionData
-      ? contributionData
-      : 'Not available for today';
-    card.addField(fieldTitle, count, true);
   }
   if (user.email) {
     card.addField('Email', user.email, false);
