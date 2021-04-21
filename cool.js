@@ -4,11 +4,8 @@ const dns = require('dns');
 
 require('dotenv').config();
 
-// ☠😢 ma is dead
-// const maService = require('./utils/maService');
 const twHelper = require('./utils/twService');
 const ghHelper = require('./utils/ghService');
-const horribleHelper = require('./utils/horribleHelper');
 const ytHelper = require('./utils/ytService');
 const enhanceChat = require('./utils/enhanceChat');
 
@@ -240,18 +237,6 @@ client.on('message', message => {
           '',
           'https://git.io/fpFgn'
         )
-      );
-    }
-  } else if (message.content.startsWith('!magnet')) {
-    const args = message.content
-      .split('!magnet')
-      .pop()
-      .trim();
-    if (args.length) {
-      horribleHelper.magnet(args, message);
-    } else {
-      message.reply(
-        'use command `!help` to see the usage.'
       );
     }
   } else if (message.content.startsWith('!twt')) {
