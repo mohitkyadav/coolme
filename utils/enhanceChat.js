@@ -2,7 +2,6 @@ require('dotenv').config();
 const Moment = require('moment');
 
 const { RichEmbed } = require('discord.js');
-const { MAGNET_URI, MAG_GIF } = process.env
 
 enhanceChat = {};
 
@@ -214,53 +213,6 @@ enhanceChat.embedTrendingTags = function (data) {
       fieldsCount++;
     }
   }
-  return embeddedMessage;
-};
-
-enhanceChat.embedAnimeSuggestions = (data) => {
-  let description = ''
-  if (data.suggestion && data.suggestion.length > 0) {
-    data.suggestion.forEach((suggestion, index) => {
-      description += `**${index + 1}**. ${suggestion} \n\n`
-    })
-  }
-
-  if (data.suggestion && data.suggestion.length === 0) {
-    return new RichEmbed()
-      .setTitle('Are you speaking alien? Try something human.')
-      .setThumbnail(data.poster || MAG_GIF)
-      .setDescription('Go check your anime name baka! 😒')
-      .setColor('#CA2424');
-  }
-
-  return new RichEmbed()
-    .setTitle(data.message)
-    .setThumbnail(data.poster || MAG_GIF)
-    .setDescription(description)
-    .setColor('#FFDC5D');
-}
-
-enhanceChat.embedMagnets = (data) => {
-  console.log(data)
-  if (data.error) {
-    return enhanceChat.embedStatic(data.error, 'Error attracting magnets', '#E53232');
-  }
-
-  if (data.suggestion) {
-    return enhanceChat.embedAnimeSuggestions(data);
-  }
-
-  const qualities = { SD: '📱', HD: '📺', UHD: '💻' }
-  const description = Object.keys(qualities)
-                      .map(quality => `[${quality} ${qualities[quality]}](${MAGNET_URI}/${data[quality]})`).join(' 🖇 ');
-
-  const date = new Moment(data.date, 'MM/DD/YYY').format('DD MMM YYYY')
-  const embeddedMessage = new RichEmbed()
-    .setTitle(`${data.animeName} | Episode ${data.episode} 📺`)
-    .setThumbnail(data.poster || MAG_GIF)
-    .setDescription(description)
-    .setFooter(`⌚ Aired ${date === 'Invalid date' ? data.date : date}`)
-    .setColor('#43B581');
   return embeddedMessage;
 };
 
