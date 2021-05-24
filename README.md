@@ -22,6 +22,8 @@ glitch / zeit / heroku.
 | _!weather `<city_name>`_   | \***\*weather information\*\***     | ✔      |
 | _!ytt_                     | \***\*Top trending on YouTube\*\*** | ✔      |
 | _!twt_                     | \***\*Top trending on Twitter\*\*** | ✔      |
+| _!toss_                    | \***\*Toss a coin\*\***             | ✔      |
+| _!random_                  | \***\*Get a random number\*\***     | ✔      |
 | _!ip `<url>`_              | \***\*ip address of the url\*\***   | ✔      |
 | _!gcard `github_username`_ | \***\*Embeded GitHub Card\*\***     | ✔      |
 | _!encrypt `text` `key`_    | \***\*Encrypted text\*\***          | ⏰     |
