@@ -252,6 +252,10 @@ client.on('message', message => {
     message.content.startsWith('!coin')
   ) {
     message.channel.send(enhanceChat.embedStatic(generalHelpers.coinToss()));
+  } else if (
+    message.content.startsWith('!random')
+  ) {
+    message.channel.send(enhanceChat.embedStatic(generalHelpers.randInt()));
   } else if (message.content.startsWith('!gcard')) {
     const args = message.content
       .split('!gcard')
