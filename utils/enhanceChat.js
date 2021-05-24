@@ -86,6 +86,7 @@ enhanceChat.embedHelp = function () {
     .setURL(`https://git.io/fpFgn`)
     .setFooter(`For more commands click go to https://git.io/fpFgn`)
     .addField('😎 Coolify text and nickames', '`!cool string`', false)
+    .addField('🏀 Toss a coin', '`!toss`', false)
     .addField('😶 Uncoolify cool text', '`!uncool string`', false)
     .addField('☁ Weather', '`!weather city`', false)
     .addField('🐤 Trending on Twitter', '`!twt`', false)

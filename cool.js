@@ -8,6 +8,7 @@ const twHelper = require('./utils/twService');
 const ghHelper = require('./utils/ghService');
 const ytHelper = require('./utils/ytService');
 const enhanceChat = require('./utils/enhanceChat');
+const generalHelpers = require('./utils/generalHelpers')
 
 const OWKEY = process.env.OWAPI;
 const YTKEY = process.env.YTKEY;
@@ -246,6 +247,11 @@ client.on('message', message => {
     message.content.startsWith('!trending on gh')
   ) {
     ghHelper.trending(message);
+  } else if (
+    message.content.startsWith('!toss') ||
+    message.content.startsWith('!coin')
+  ) {
+    message.channel.send(enhanceChat.embedStatic(generalHelpers.coinToss()));
   } else if (message.content.startsWith('!gcard')) {
     const args = message.content
       .split('!gcard')
